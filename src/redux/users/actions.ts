@@ -1,4 +1,6 @@
-export const featchUsersRequest = data => ({
-    type: FEATCH_USERS_REQUEST,
-    payload: data,
-});
+import * as Type from './types';
+import { createAction } from '../../helpers/createAction';
+
+const featchUsersRequest = createAction(Type.FEATCH_USERS_REQUEST);
+
+export { featchUsersRequest };

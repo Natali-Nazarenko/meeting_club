@@ -1,3 +1,7 @@
 export const PageUserInfo = () => {
-    return <div>User Info</div>;
+    return (
+        <>
+            <div>User info</div>
+        </>
+    );
 };

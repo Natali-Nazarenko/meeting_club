@@ -1,4 +1,4 @@
-import { Provider } from 'react-intl/src/components/injectIntl';
+import { Provider } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import store from './redux/store';
@@ -7,6 +7,7 @@ import { PageLogIn } from './pages/PageLogIn';
 import { PageUserInfo } from './pages/PageUserInfo';
 import { PageUsers } from './pages/PageUsers';
 import { PageLogOut } from './pages/PageLogOut';
+import { Menu } from './components/Menu';
 
 function App() {
     const { login, users, userInfo, logout } = navigation;
@@ -15,6 +16,7 @@ function App() {
         <>
             <Provider store={store}>
                 <Header />
+                <Menu />
                 <Routes>
                     <Route path={login.path} element={<PageLogIn />} />
                     <Route path={users.path} element={<PageUsers />} />
