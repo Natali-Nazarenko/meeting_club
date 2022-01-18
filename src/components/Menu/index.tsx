@@ -1,4 +1,4 @@
-import { featchUsersRequest } from '../../redux/users/actions';
+import { fetchUsersRequest } from '../../redux/users/actions';
 import { useDispatch } from 'react-redux';
 import { NavDiv } from '../NavDiv';
 import { NavLink } from 'react-router-dom';

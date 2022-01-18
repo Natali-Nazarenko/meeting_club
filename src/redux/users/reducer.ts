@@ -34,14 +34,23 @@ export const usersReducer = <T extends Reducer>(
     action: Action<T>,
 ) => {
     state = state || initialState;
-
+    console.log('usersReducer: ', action.payload);
     switch (action.type) {
-        case Type.FEATCH_USERS_REQUEST:
+        case Type.FETCH_USERS_REQUEST:
             return {
                 ...state,
-                isLoading: true,
+                isLoading: false,
                 error: null,
             };
+
+        case Type.FETCH_USERS_SUCCESS:
+            return {
+                ...state,
+                users: action.payload,
+                isLoading: false,
+                error: null,
+            };
+        case Type.FETCH_USERS_ERROR:
 
         default:
             return state;
