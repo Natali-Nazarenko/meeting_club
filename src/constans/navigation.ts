@@ -4,11 +4,11 @@ export const navigation = {
         label: 'login',
     },
     users: {
-        path: 'users',
+        path: '/users',
         label: 'users',
     },
     userInfo: {
-        path: 'user_info',
+        path: '/user_info',
         label: 'user info',
     },
     logout: {
