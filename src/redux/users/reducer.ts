@@ -8,6 +8,21 @@ interface User {
         last: string;
     };
     date: string;
+    lolcation: {
+        postcode: string;
+        state: string;
+        city: string;
+        street: string;
+    };
+    phone: string;
+    picture: {
+        large: string;
+        medium: string;
+        thumbnail: string;
+    };
+    registered: {
+        date: string;
+    };
 }
 
 interface UsersState {
@@ -34,14 +49,22 @@ export const usersReducer = <T extends Reducer>(
     action: Action<T>,
 ) => {
     state = state || initialState;
-
     switch (action.type) {
-        case Type.FEATCH_USERS_REQUEST:
+        case Type.FETCH_USERS_REQUEST:
             return {
                 ...state,
-                isLoading: true,
+                isLoading: false,
                 error: null,
             };
+
+        case Type.FETCH_USERS_SUCCESS:
+            return {
+                ...state,
+                users: action.payload,
+                isLoading: false,
+                error: null,
+            };
+        case Type.FETCH_USERS_ERROR:
 
         default:
             return state;
