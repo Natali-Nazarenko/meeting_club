@@ -1,8 +1,42 @@
-.card {
+.male {
     display: flex;
     flex-direction: column;
-    width: 100px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 200px;
     height: 250px;
-    border: 1px solid green;
+    background: linear-gradient(#4bc1f0, #5553ee);
+    border: 1px solid blue;
     border-radius: 5px;
+    box-shadow: 0 0 10px #140691;
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 100px;
+    }
+    li {
+        text-shadow: 1px 1px 5px black;
+    }
+}
+.female {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 200px;
+    height: 250px;
+    background: linear-gradient(#f09fe9, rgb(235, 49, 142));
+    border: 1px solid red;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #920540;
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 100px;
+    }
+    li {
+        text-shadow: 1px 1px 5px black;
+    }
 }

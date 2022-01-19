@@ -12,7 +12,7 @@ export const Card = ({
     gender: string;
 }) => {
     return (
-        <div className={styles.card}>
+        <div className={styles[gender]}>
             <img src={src} />
             <ul>
                 <li>{fio}</li>

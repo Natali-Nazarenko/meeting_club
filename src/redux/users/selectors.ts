@@ -5,7 +5,9 @@ interface User {
         first: string;
         last: string;
     };
-    date: string;
+    dob: {
+        date: string;
+    };
     lolcation: {
         postcode: string;
         state: string;
