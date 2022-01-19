@@ -17,9 +17,9 @@ export const PageUsers = () => {
             {users.map(user => (
                 <Card
                     key={user.phone}
-                    src={user.picture.medium}
+                    src={user.picture.large}
                     fio={`${user.name.title} ${user.name.first} ${user.name.last}`}
-                    dateBth={user.date}
+                    dateBth={user.dob.date.slice(0, 10)}
                     gender={user.gender}
                 ></Card>
             ))}
