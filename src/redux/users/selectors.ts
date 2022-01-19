@@ -6,6 +6,21 @@ interface User {
         last: string;
     };
     date: string;
+    lolcation: {
+        postcode: string;
+        state: string;
+        city: string;
+        street: string;
+    };
+    phone: string;
+    picture: {
+        large: string;
+        medium: string;
+        thumbnail: string;
+    };
+    registered: {
+        date: string;
+    };
 }
 
 interface State {
@@ -15,10 +30,6 @@ interface State {
     };
 }
 
-const usersSelector = (state: State): User[] => {
-    console.log('usersSelector: ', state.usersReducer.users);
-
-    return state.usersReducer.users;
-};
+const usersSelector = (state: State): User[] => state.usersReducer.users;
 
 export { usersSelector };

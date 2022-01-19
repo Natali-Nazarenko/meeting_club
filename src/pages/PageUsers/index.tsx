@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsersRequest } from '../../redux/users/actions';
 import { usersSelector } from '../../redux/users/selectors';
 import styles from './PageUsers.module.scss';
+import { Card } from '../../components/Card';
 
 export const PageUsers = () => {
     const dispatch = useDispatch();
@@ -11,14 +12,17 @@ export const PageUsers = () => {
     useEffect(() => {
         dispatch(fetchUsersRequest());
     }, [dispatch]);
-    console.log('users: ', users);
     return (
-        <ul className={styles.listUsers}>
+        <div className={styles.containerUser}>
             {users.map(user => (
-                <li key={user.name.first} className={styles.listDrivers__item}>
-                    {user.name.first}
-                </li>
+                <Card
+                    key={user.phone}
+                    src={user.picture.medium}
+                    fio={`${user.name.title} ${user.name.first} ${user.name.last}`}
+                    dateBth={user.date}
+                    gender={user.gender}
+                ></Card>
             ))}
-        </ul>
+        </div>
     );
 };

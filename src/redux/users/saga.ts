@@ -6,7 +6,6 @@ import { FETCH_USERS_REQUEST } from './types';
 function* fetchUsersSaga(): Generator {
     try {
         const users = yield call(usersApi.fetchUsers);
-        console.log('usersSaga: ', users);
         yield put(fetchUsersSuccess(users));
     } catch (error) {
         yield put(fetchUsersError(error));
