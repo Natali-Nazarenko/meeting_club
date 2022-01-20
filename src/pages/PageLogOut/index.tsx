@@ -1,13 +1,17 @@
 import { NavLink } from 'react-router-dom';
-import { NavDiv } from '../../components/NavDiv';
 import { navigation } from '../../constans/navigation';
+import styles from './PageLogOut.module.scss';
 
 export const PageLogOut = () => {
     return (
         <>
-            <NavLink to={navigation.login.path}>
-                <NavDiv text="Log Out" />
-            </NavLink>
+            <div className={styles.pageLogOut}>
+                <NavLink to={navigation.login.path}>
+                    <div className={styles.exit}>
+                        <p>Log Out</p>
+                    </div>
+                </NavLink>
+            </div>
         </>
     );
 };

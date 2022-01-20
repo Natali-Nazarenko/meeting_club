@@ -1,11 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import { NavDiv } from '../../components/NavDiv';
 import { navigation } from '../../constans/navigation';
+import styles from './PageLogIn.module.scss';
 
 export const PageLogIn = () => {
     return (
-        <NavLink to={navigation.users.path}>
-            <NavDiv text="Log In" />
-        </NavLink>
+        <div className={styles.pageLogIn}>
+            <NavLink to={navigation.users.path}>
+                <div className={styles.entrance}>
+                    <p>Log in</p>
+                </div>{' '}
+            </NavLink>
+        </div>
     );
 };

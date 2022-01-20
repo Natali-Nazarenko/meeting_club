@@ -1,12 +1,11 @@
-import { fetchUsersRequest } from '../../redux/users/actions';
-import { useDispatch } from 'react-redux';
 import { NavDiv } from '../NavDiv';
 import { NavLink } from 'react-router-dom';
 import { navigation } from '../../constans/navigation';
+import styles from './Menu.module.scss';
 
 export const Menu = () => {
     return (
-        <>
+        <div className={styles.menu}>
             <NavLink to={navigation.users.path}>
                 <NavDiv text="Users" />
             </NavLink>
@@ -18,6 +17,6 @@ export const Menu = () => {
             <NavLink to={navigation.logout.path}>
                 <NavDiv text="Log out" />
             </NavLink>
-        </>
+        </div>
     );
 };

@@ -4,6 +4,8 @@ import { fetchUsersRequest } from '../../redux/users/actions';
 import { usersSelector } from '../../redux/users/selectors';
 import styles from './PageUsers.module.scss';
 import { Card } from '../../components/Card';
+import { NavLink } from 'react-router-dom';
+import { navigation } from '../../constans/navigation';
 
 export const PageUsers = () => {
     const dispatch = useDispatch();
@@ -15,13 +17,18 @@ export const PageUsers = () => {
     return (
         <div className={styles.containerUser}>
             {users.map(user => (
-                <Card
+                <NavLink
+                    to={navigation.userInfo.path}
+                    state={user}
                     key={user.phone}
-                    src={user.picture.large}
-                    fio={`${user.name.title} ${user.name.first} ${user.name.last}`}
-                    dateBth={user.dob.date.slice(0, 10)}
-                    gender={user.gender}
-                ></Card>
+                >
+                    <Card
+                        src={user.picture.large}
+                        fio={`${user.name.title} ${user.name.first} ${user.name.last}`}
+                        dateBth={user.dob.date.slice(0, 10)}
+                        gender={user.gender}
+                    ></Card>
+                </NavLink>
             ))}
         </div>
     );

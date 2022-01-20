@@ -8,7 +8,7 @@ interface User {
     dob: {
         date: string;
     };
-    lolcation: {
+    location: {
         postcode: string;
         state: string;
         city: string;

@@ -8,7 +8,7 @@ interface User {
         last: string;
     };
     date: string;
-    lolcation: {
+    location: {
         postcode: string;
         state: string;
         city: string;
