@@ -3,15 +3,19 @@ import { apiConfig } from './apiConfig';
 
 Axios.defaults.baseURL = apiConfig.baseUrl;
 
-async function fetchUsers() {
-    const response = await Axios.get(
-        '?results=20&inc=dob,gender,location,name,phone,picture,registered&seed=abc',
-    );
+export async function fetchUsers(number: number) {
+    let response;
+    if (number > 1) {
+        response = await Axios.get(
+            `?page=${number}&results=10&inc=dob,gender,location,name,phone,picture,registered,login&seed=abc`,
+        );
+    } else {
+        response = await Axios.get(
+            `?page=1&results=20&inc=dob,gender,location,name,phone,picture,registered,login&seed=abc`,
+        );
+    }
+    console.log('response.data: ', response.data);
+
     const { results } = response.data;
-    console.log('usersService: ', results);
     return results;
 }
-
-export const usersApi = {
-    fetchUsers,
-};

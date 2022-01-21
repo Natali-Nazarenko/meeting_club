@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { UserInfo } from '../../components/User';
+import { UserInfo } from '../../components';
 import styles from './PageUserInfo.module.scss';
 
 interface User {
@@ -29,7 +29,7 @@ interface User {
     };
 }
 
-export const PageUserInfo = () => {
+const PageUserInfo = () => {
     const { state } = useLocation();
     const selectedUser = state as User;
     console.log('user: ', selectedUser);
@@ -39,3 +39,5 @@ export const PageUserInfo = () => {
         <p className={styles.notice}>Select user</p>
     );
 };
+
+export default PageUserInfo;

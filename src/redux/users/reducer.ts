@@ -1,3 +1,4 @@
+import { usersSelector } from './selectors';
 import * as Type from './types';
 
 interface User {
@@ -23,10 +24,14 @@ interface User {
     registered: {
         date: string;
     };
+    login: {
+        uuid: string;
+    };
 }
 
 interface UsersState {
     users: User[];
+    currentPage: number;
     isLoading: boolean;
     error: Error | null | string;
 }
@@ -36,31 +41,31 @@ interface Action<T> {
     payload: T;
 }
 
-type Reducer = User & User[] & Error;
-
-const initialState = {
+const initialState: UsersState = {
     users: [],
+    currentPage: 1,
     isLoading: false,
     error: null,
 };
+type Reducer = User & User[] & Error;
 
 export const usersReducer = <T extends Reducer>(
     state: UsersState,
     action: Action<T>,
-) => {
+): UsersState => {
     state = state || initialState;
     switch (action.type) {
         case Type.FETCH_USERS_REQUEST:
             return {
                 ...state,
-                isLoading: false,
+                isLoading: true,
                 error: null,
             };
 
         case Type.FETCH_USERS_SUCCESS:
             return {
                 ...state,
-                users: action.payload,
+                users: [...state.users, ...action.payload],
                 isLoading: false,
                 error: null,
             };
