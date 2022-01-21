@@ -23,15 +23,24 @@ interface User {
     registered: {
         date: string;
     };
+    login: {
+        uuid: string;
+    };
 }
 
 interface State {
     usersReducer: {
         users: User[];
+        currentPage: number;
         isLoading: boolean;
     };
 }
 
 const usersSelector = (state: State): User[] => state.usersReducer.users;
+const currentPageSelector = (state: State): number => {
+    console.log(state.usersReducer.currentPage);
 
-export { usersSelector };
+    return state.usersReducer.currentPage;
+};
+
+export { usersSelector, currentPageSelector };
