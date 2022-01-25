@@ -29,7 +29,7 @@ interface User {
 
 export const UserInfo = ({ user }: { user: User }) => {
     return (
-        <div className={styles.userInfo}>
+        <div className={styles[user.gender]}>
             <img src={user.picture.large} alt="avatar" />
             <ul>
                 <li>{`${user.name.title} ${user.name.first} ${user.name.last}`}</li>

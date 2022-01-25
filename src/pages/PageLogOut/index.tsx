@@ -1,12 +1,20 @@
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import { navigation } from '../../constans/navigation';
 import styles from './PageLogOut.module.scss';
+import { outAuthorization } from '../../redux/users/actions';
 
-export const PageLogOut = () => {
+const PageLogOut = () => {
+    const dispatch = useDispatch();
+    const logout = () => {
+        dispatch(outAuthorization());
+    };
+
     return (
         <>
             <div className={styles.pageLogOut}>
-                <NavLink to={navigation.login.path}>
+                <NavLink to={navigation.login.path} onClick={logout}>
                     <div className={styles.exit}>
                         <p>Log Out</p>
                     </div>
@@ -15,3 +23,5 @@ export const PageLogOut = () => {
         </>
     );
 };
+
+export default PageLogOut;

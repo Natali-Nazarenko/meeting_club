@@ -31,16 +31,14 @@ interface User {
 interface State {
     usersReducer: {
         users: User[];
+        isAuth: boolean;
         currentPage: number;
         isLoading: boolean;
     };
 }
 
 const usersSelector = (state: State): User[] => state.usersReducer.users;
-const currentPageSelector = (state: State): number => {
-    console.log(state.usersReducer.currentPage);
-
-    return state.usersReducer.currentPage;
-};
-
-export { usersSelector, currentPageSelector };
+const loadingSelector = (state: State): boolean => state.usersReducer.isLoading;
+const authorizationSelector = (state: State): boolean =>
+    state.usersReducer.isAuth;
+export { usersSelector, loadingSelector, authorizationSelector };

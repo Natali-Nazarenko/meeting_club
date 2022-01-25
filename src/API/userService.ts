@@ -14,8 +14,6 @@ export async function fetchUsers(number: number) {
             `?page=1&results=20&inc=dob,gender,location,name,phone,picture,registered,login&seed=abc`,
         );
     }
-    console.log('response.data: ', response.data);
-
     const { results } = response.data;
     return results;
 }
