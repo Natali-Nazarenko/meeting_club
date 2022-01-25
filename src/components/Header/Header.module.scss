@@ -1,18 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Tangerine:wght@700&display=swap');
+
 .header {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: auto;
     height: 70px;
-    font-size: large;
-    color: rgb(15, 204, 141);
-    background-color: rgb(166, 218, 248);
+    font-family: 'Neonderthaw', sans-serif;
+    font-size: xxx-large;
+    color: rgb(246, 247, 250);
+    background: linear-gradient(45deg, #3e0fbd 33%, #e74cc6 66%, #e42424);
+    mix-blend-mode: luminosity;
     img {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
     p {
-        margin: 0 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 10px;
+        word-spacing: 10px;
+        margin: auto 30px;
     }
 }

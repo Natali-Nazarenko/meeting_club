@@ -32,11 +32,12 @@ interface User {
 const PageUserInfo = () => {
     const { state } = useLocation();
     const selectedUser = state as User;
-    console.log('user: ', selectedUser);
     return selectedUser ? (
         <UserInfo user={state as User} />
     ) : (
-        <p className={styles.notice}>Select user</p>
+        <div className={styles.container}>
+            <p className={styles.notice}>Select a user to see their info</p>
+        </div>
     );
 };
 
