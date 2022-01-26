@@ -35,7 +35,7 @@ export const UserInfo = ({ user }: { user: User }) => {
                 <li>{`${user.name.title} ${user.name.first} ${user.name.last}`}</li>
                 <li>{user.dob.date.slice(0, 10)}</li>
                 <li>{user.gender}</li>
-                <li>{`${user.location.state}, ${user.location.city}, ${user.location.street}, ${user.location.postcode}`}</li>
+                <li>{`${user.location.state}, ${user.location.city}, ${user.location.postcode}`}</li>
                 <li>{user.phone}</li>
                 <li>{user.registered.date.slice(0, 10)}</li>
             </ul>
