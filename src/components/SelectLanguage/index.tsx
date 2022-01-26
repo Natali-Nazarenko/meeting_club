@@ -1,11 +1,18 @@
 import styles from './SelectLanguage.module.scss';
+import { languages } from '../../constans/languages';
 
-export const SelectLanguage = () => {
+export const SelectLanguage = ({
+    handleChange,
+}: {
+    handleChange: (data: any) => void;
+}) => {
     return (
-        <select className={styles.blockChoiseLaguage}>
-            <option value="en-US">English</option>
-            <option value="ru-RU">Русский</option>
-            <option value="de_DE">Deutsche</option>
+        <select className={styles.blockChoiseLanguage} onChange={handleChange}>
+            {languages.map(({ name, code }) => (
+                <option key={code} value={code}>
+                    {name}
+                </option>
+            ))}
         </select>
     );
 };
