@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsersRequest } from '../../redux/users/actions';
 import { loadingSelector, usersSelector } from '../../redux/users/selectors';
 import styles from './PageUsers.module.scss';
-import { Card } from '../../components/Card';
 import { NavLink } from 'react-router-dom';
 import { navigation } from '../../constans/navigation';
-import { Spinner } from '../../components';
+import { Spinner, Card } from '../../components';
 
 const PageUsers = () => {
     const dispatch = useDispatch();
@@ -34,7 +33,6 @@ const PageUsers = () => {
 
     useEffect(() => {
         if (fetching) {
-            console.log('currentPage: ', currentPage);
             dispatch(fetchUsersRequest(currentPage));
             setCurrentPage(prevState => prevState + 1);
             setFetching(false);

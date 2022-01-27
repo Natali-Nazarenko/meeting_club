@@ -1,8 +1,9 @@
-import { NavDiv } from '../NavDiv';
 import { NavLink } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+
+import { NavDiv } from '../NavDiv';
 import { navigation } from '../../constans/navigation';
 import styles from './Menu.module.scss';
-import { FormattedMessage } from 'react-intl';
 
 export const Menu = () => {
     return (

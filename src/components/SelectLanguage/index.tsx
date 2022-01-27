@@ -4,7 +4,7 @@ import { languages } from '../../constans/languages';
 export const SelectLanguage = ({
     handleChange,
 }: {
-    handleChange: (data: any) => void;
+    handleChange: (data: React.ChangeEvent<HTMLSelectElement>) => void;
 }) => {
     return (
         <select className={styles.blockChoiseLanguage} onChange={handleChange}>

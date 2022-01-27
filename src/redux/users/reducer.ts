@@ -56,10 +56,38 @@ export const usersReducer = <T extends Reducer>(
 ): UsersState => {
     state = state || initialState;
     switch (action.type) {
+        case Type.FETCH_USER_LOGIN_REQUEST:
+            return {
+                ...state,
+                isAuth: action.payload,
+                isLoading: true,
+                error: null,
+            };
+        case Type.FETCH_USER_LOGOUT_REQUEST:
+            return {
+                ...state,
+                isAuth: action.payload,
+                isLoading: true,
+                error: null,
+            };
         case Type.FETCH_USERS_REQUEST:
             return {
                 ...state,
                 isLoading: true,
+                error: null,
+            };
+        case Type.FETCH_USER_LOGIN_SUCCESS:
+            return {
+                ...state,
+                isAuth: action.payload,
+                isLoading: false,
+                error: null,
+            };
+        case Type.FETCH_USER_LOGOUT_SUCCESS:
+            return {
+                ...state,
+                isAuth: false,
+                isLoading: false,
                 error: null,
             };
 
@@ -70,21 +98,9 @@ export const usersReducer = <T extends Reducer>(
                 isLoading: false,
                 error: null,
             };
+        case Type.FETCH_USER_LOGIN_ERROR:
+        case Type.FETCH_USER_LOGOUT_ERROR:
         case Type.FETCH_USERS_ERROR:
-        case Type.FETCH_USER_LOGIN:
-            return {
-                ...state,
-                isAuth: true,
-                isLoading: false,
-                error: null,
-            };
-        case Type.FETCH_USER_LOGIN:
-            return {
-                ...state,
-                isAuth: false,
-                isLoading: false,
-                error: null,
-            };
 
         default:
             return state;
