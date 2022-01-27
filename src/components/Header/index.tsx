@@ -11,8 +11,6 @@ export const Header = ({
     handleChange: (data: React.ChangeEvent<HTMLSelectElement>) => void;
 }): JSX.Element => {
     const auth = useSelector(authorizationSelector);
-    console.log('auth: ', auth);
-
     return (
         <header className={styles.header}>
             {auth && <Menu />}
