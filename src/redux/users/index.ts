@@ -1,2 +1,2 @@
 export { usersReducer } from './reducer';
-export { watchUsers } from './saga';
+export { watchUsers, watchAuth, watchAuthOut } from './saga';

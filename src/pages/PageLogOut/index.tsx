@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 
 import { navigation } from '../../constans/navigation';
 import styles from './PageLogOut.module.scss';
-import { outAuthorization } from '../../redux/users/actions';
+import { outAuthorizationRequest } from '../../redux/users/actions';
 import { FormattedMessage } from 'react-intl';
 
 const PageLogOut = () => {
     const dispatch = useDispatch();
     const logout = () => {
-        dispatch(outAuthorization());
+        dispatch(outAuthorizationRequest(false));
     };
 
     return (

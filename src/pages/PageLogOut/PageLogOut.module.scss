@@ -1,17 +1,14 @@
+@import '../../styles/templates.scss';
+
 .pageLogOut {
     position: relative;
     display: inline-block;
     top: 40vh;
     left: 40vw;
     .exit {
-        width: 200px;
-        height: 50px;
-        background-color: #888;
-        border-radius: 5px;
-        text-align: center;
+        @extend %authButton;
     }
     p {
-        margin: 0;
-        padding-top: 15px;
+        @extend %paragraph;
     }
 }

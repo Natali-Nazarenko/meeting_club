@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux';
 
 import { navigation } from '../../constans/navigation';
 import styles from './PageLogIn.module.scss';
-import { setAuthorization } from '../../redux/users/actions';
+import { authorizationRequest } from '../../redux/users/actions';
 import { FormattedMessage } from 'react-intl';
 
 export const PageLogIn = () => {
     const dispatch = useDispatch();
 
     const authorization = () => {
-        dispatch(setAuthorization());
+        dispatch(authorizationRequest(true));
     };
 
     return (
