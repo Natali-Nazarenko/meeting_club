@@ -48,7 +48,7 @@ const initialState: UsersState = {
     isLoading: false,
     error: null,
 };
-type Reducer = User & User[] & Error & boolean;
+type Reducer = User & User[] & Error & boolean & number;
 
 export const usersReducer = <T extends Reducer>(
     state: UsersState,
@@ -73,6 +73,7 @@ export const usersReducer = <T extends Reducer>(
         case Type.FETCH_USERS_REQUEST:
             return {
                 ...state,
+                currentPage: action.payload,
                 isLoading: true,
                 error: null,
             };

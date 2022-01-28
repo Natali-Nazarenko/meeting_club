@@ -10,7 +10,7 @@ import { Spinner, Card } from '../../components';
 const PageUsers = () => {
     const dispatch = useDispatch();
     const users = useSelector(usersSelector);
-    const [fetching, setFetching] = useState(true);
+    const [fetching, setFetching] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const isLoaded = useSelector(loadingSelector);
 
@@ -32,7 +32,12 @@ const PageUsers = () => {
     }, []);
 
     useEffect(() => {
+        if (users.length < 20) {
+            console.log('currentPage1: ', currentPage);
+            dispatch(fetchUsersRequest(1));
+        }
         if (fetching) {
+            console.log('currentPage2: ', currentPage);
             dispatch(fetchUsersRequest(currentPage));
             setCurrentPage(prevState => prevState + 1);
             setFetching(false);
