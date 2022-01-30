@@ -12,7 +12,7 @@ export const PageLogIn = () => {
     const authorization = () => {
         dispatch(authorizationRequest(true));
     };
-
+    console.log('auth: ', localStorage.getItem('auth'));
     return (
         <div className={styles.pageLogIn}>
             <NavLink to={navigation.users.path} onClick={authorization}>

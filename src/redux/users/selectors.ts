@@ -1,38 +1,10 @@
-interface User {
-    gender: string;
-    name: {
-        title: string;
-        first: string;
-        last: string;
-    };
-    dob: {
-        date: string;
-    };
-    location: {
-        postcode: string;
-        state: string;
-        city: string;
-        street: string;
-    };
-    phone: string;
-    picture: {
-        large: string;
-        medium: string;
-        thumbnail: string;
-    };
-    registered: {
-        date: string;
-    };
-    login: {
-        uuid: string;
-    };
-}
+import { User } from '../../constans/interfaces';
 
 interface State {
     usersReducer: {
         users: User[];
-        isAuth: boolean;
         currentPage: number;
+        isAuth: boolean;
         isLoading: boolean;
     };
 }

@@ -10,7 +10,7 @@ export const Header = ({
 }: {
     handleChange: (data: React.ChangeEvent<HTMLSelectElement>) => void;
 }): JSX.Element => {
-    const auth = useSelector(authorizationSelector);
+    const auth = localStorage.getItem('auth');
     return (
         <header className={styles.header}>
             {auth && <Menu />}

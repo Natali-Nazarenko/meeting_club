@@ -10,7 +10,7 @@ import { Spinner, Card } from '../../components';
 const PageUsers = () => {
     const dispatch = useDispatch();
     const users = useSelector(usersSelector);
-    const [fetching, setFetching] = useState(true);
+    const [fetching, setFetching] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const isLoaded = useSelector(loadingSelector);
 
@@ -32,6 +32,9 @@ const PageUsers = () => {
     }, []);
 
     useEffect(() => {
+        if (users.length < 20) {
+            dispatch(fetchUsersRequest(currentPage));
+        }
         if (fetching) {
             dispatch(fetchUsersRequest(currentPage));
             setCurrentPage(prevState => prevState + 1);
@@ -41,22 +44,23 @@ const PageUsers = () => {
     }, [dispatch, fetching]);
     return (
         <div className={styles.containerUser}>
+            {isLoaded && <Spinner />}
             {users.map(user => (
                 <NavLink
-                    to={navigation.userInfo.path}
-                    state={user}
+                    to={{
+                        pathname: navigation.userInfo.path,
+                        search: user.login.uuid,
+                    }}
                     key={user.login.uuid}
                 >
-                    {isLoaded ? (
-                        <Spinner />
-                    ) : (
+                    {
                         <Card
                             src={user.picture.large}
                             fio={`${user.name.title} ${user.name.first} ${user.name.last}`}
                             dateBth={user.dob.date.slice(0, 10)}
                             gender={user.gender}
                         ></Card>
-                    )}
+                    }
                 </NavLink>
             ))}
         </div>
