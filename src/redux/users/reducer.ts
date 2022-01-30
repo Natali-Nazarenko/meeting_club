@@ -46,7 +46,7 @@ export const usersReducer = <T extends Reducer>(
         case Type.FETCH_USER_LOGOUT_SUCCESS:
             return {
                 ...state,
-                isAuth: false,
+                isAuth: action.payload,
                 isLoading: false,
                 error: null,
             };

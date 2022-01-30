@@ -33,11 +33,9 @@ const PageUsers = () => {
 
     useEffect(() => {
         if (users.length < 20) {
-            console.log('currentPage1: ', currentPage);
-            dispatch(fetchUsersRequest(1));
+            dispatch(fetchUsersRequest(currentPage));
         }
         if (fetching) {
-            console.log('currentPage2: ', currentPage);
             dispatch(fetchUsersRequest(currentPage));
             setCurrentPage(prevState => prevState + 1);
             setFetching(false);
@@ -46,22 +44,23 @@ const PageUsers = () => {
     }, [dispatch, fetching]);
     return (
         <div className={styles.containerUser}>
+            {isLoaded && <Spinner />}
             {users.map(user => (
                 <NavLink
-                    to={navigation.userInfo.path}
-                    state={user}
+                    to={{
+                        pathname: navigation.userInfo.path,
+                        search: user.login.uuid,
+                    }}
                     key={user.login.uuid}
                 >
-                    {isLoaded ? (
-                        <Spinner />
-                    ) : (
+                    {
                         <Card
                             src={user.picture.large}
                             fio={`${user.name.title} ${user.name.first} ${user.name.last}`}
                             dateBth={user.dob.date.slice(0, 10)}
                             gender={user.gender}
                         ></Card>
-                    )}
+                    }
                 </NavLink>
             ))}
         </div>
