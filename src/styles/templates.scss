@@ -12,3 +12,22 @@
     margin: 0;
     padding-top: 15px;
 }
+
+%card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 200px;
+    height: 250px;
+    border-radius: 5px;
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 100px;
+    }
+    li {
+        text-shadow: 1px 1px 5px rgb(58, 57, 57);
+    }
+}

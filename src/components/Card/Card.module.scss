@@ -1,42 +1,34 @@
+@import '../../styles/templates.scss';
+
 .male {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    width: 200px;
-    height: 250px;
+    @extend %card;
+
     background: linear-gradient(#4bc1f0, #5553ee);
     border: 1px solid blue;
-    border-radius: 5px;
     box-shadow: 0 0 10px #140691;
-    img {
-        width: 150px;
-        height: 150px;
-        border-radius: 100px;
-    }
-    li {
-        text-shadow: 1px 1px 5px black;
-    }
 }
 .female {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    width: 200px;
-    height: 250px;
+    @extend %card;
+
     background: linear-gradient(#f09fe9, rgb(235, 49, 142));
     border: 1px solid red;
-    border-radius: 5px;
     box-shadow: 0 0 10px #920540;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 100px auto;
+    width: 600px;
+    height: 250px;
+    background: rgb(241, 245, 182);
+    border: 1px solid rgb(243, 146, 20);
+    border-radius: 5px;
+    box-shadow: 10px 10px 50px #f3b166;
     img {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
         border-radius: 100px;
-    }
-    li {
-        text-shadow: 1px 1px 5px rgb(58, 57, 57);
     }
 }
