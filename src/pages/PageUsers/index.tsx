@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsersRequest } from '../../redux/users/actions';
 import { loadingSelector, usersSelector } from '../../redux/users/selectors';
@@ -10,41 +10,41 @@ import { Spinner, Card } from '../../components';
 const PageUsers = () => {
     const dispatch = useDispatch();
     const users = useSelector(usersSelector);
-    const [fetching, setFetching] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const isLoaded = useSelector(loadingSelector);
+    const isLoading = useSelector(loadingSelector);
 
-    const scrollHeandler = (event: any) => {
-        if (
-            event.target.documentElement.scrollHeight -
-                (event.target.documentElement.scrollTop + window.innerHeight) <
-            1
-        ) {
-            setFetching(true);
-        }
-    };
+    const scrollHeandler = useCallback(
+        event => {
+            if (
+                event.target.documentElement.scrollHeight -
+                    (event.target.documentElement.scrollTop +
+                        window.innerHeight) <
+                1
+            ) {
+                dispatch(fetchUsersRequest(currentPage));
+                setCurrentPage(prevState => prevState + 1);
+            }
+        },
+        [dispatch, currentPage],
+    );
 
     useEffect(() => {
         document.addEventListener('scroll', scrollHeandler);
         return function () {
             document.removeEventListener('scroll', scrollHeandler);
         };
-    }, []);
+    }, [scrollHeandler]);
 
     useEffect(() => {
         if (users.length < 20) {
             dispatch(fetchUsersRequest(currentPage));
-        }
-        if (fetching) {
-            dispatch(fetchUsersRequest(currentPage));
             setCurrentPage(prevState => prevState + 1);
-            setFetching(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dispatch, fetching]);
+    }, [dispatch]);
     return (
         <div className={styles.containerUser}>
-            {isLoaded && <Spinner />}
+            {isLoading && <Spinner />}
             {users.map(user => (
                 <NavLink
                     to={{
