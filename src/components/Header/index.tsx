@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
 import { SelectLanguage, Menu } from '../';
-import { authorizationSelector } from '../../redux/users/selectors';
 
 export const Header = ({
     handleChange,
