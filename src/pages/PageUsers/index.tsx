@@ -13,27 +13,28 @@ const PageUsers = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const isLoading = useSelector(loadingSelector);
 
-    const scrollHeandler = useCallback(
+    const heandlerScroll = useCallback(
         event => {
             if (
                 event.target.documentElement.scrollHeight -
                     (event.target.documentElement.scrollTop +
                         window.innerHeight) <
-                1
+                    1 &&
+                isLoading === false
             ) {
                 dispatch(fetchUsersRequest(currentPage));
                 setCurrentPage(prevState => prevState + 1);
             }
         },
-        [dispatch, currentPage],
+        [dispatch, currentPage, isLoading],
     );
 
     useEffect(() => {
-        document.addEventListener('scroll', scrollHeandler);
+        document.addEventListener('scroll', heandlerScroll);
         return function () {
-            document.removeEventListener('scroll', scrollHeandler);
+            document.removeEventListener('scroll', heandlerScroll);
         };
-    }, [scrollHeandler]);
+    }, [heandlerScroll]);
 
     useEffect(() => {
         if (users.length < 20) {
